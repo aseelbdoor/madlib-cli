@@ -184,5 +184,8 @@ pyrightconfig.json
 [Ss]cripts
 pyvenv.cfg
 pip-selfcheck.json
+.idea
+.pytest_cache
+venv
 
 # End of https://www.toptal.com/developers/gitignore/api/venv,python

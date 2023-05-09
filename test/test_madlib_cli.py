@@ -1,17 +1,10 @@
 import pytest
 from madlib_cli.madlib import read_template, parse_template, merge
 
-class FileNotFoundError(Exception):
-    def __init__(self):
-        super().__init__("This path not found")
-
-@pytest.mark.skip("pending")
 def test_read_template_returns_stripped_string():
-    actual = read_template("assets/test.txt")
+    actual = read_template("/home/aseel/python-fun/madlib-cli/madlib_cli/assets/dark_and_stormy_night_template.txt")
     expected = "It was a {Adjective} and {Adjective} {Noun}."
     assert actual == expected
-
-
 
 def test_parse_template():
     actual_stripped, actual_parts = parse_template(
@@ -31,7 +24,6 @@ def test_merge():
     assert actual == expected
 
 
-@pytest.mark.skip("pending")
 def test_read_template_raises_exception_with_bad_path():
 
     with pytest.raises(FileNotFoundError):

@@ -4,7 +4,7 @@ def read_template(path):
             text=f.read()
         return text
     except FileNotFoundError:
-        return f'This path not found {path}'
+        raise FileNotFoundError (f'File not found at path: {path}')
     
 def parse_template(a):
     try:
@@ -27,7 +27,13 @@ def parse_template(a):
         return "The text formate does not appropriate"
 
 def welcome(words):
-    print('Welcome in Madlib Cli Game we hope you to have fun')
+    print('''
+    Welcome to the Madlib game! In this game, you will be asked to provide various parts of speech such as nouns, verbs, and adjectives, which will be used to fill in the blanks of a story.
+
+    To get started, simply follow the prompts and enter the requested words when prompted. Once you've entered all the words, the completed story will be displayed.
+
+    Let's get started!''')
+    
     inputs=[]
     for i in words:
         a=input(f"Please enter {i}  ")
@@ -53,9 +59,11 @@ def write(path,content):
         result=f.read()
     return result
 
-#main 
-# a=read_template('assests\dark_and_stormy_night_template.txt')
-# b,c=parse_template(a)
-# d=welcome(c)
-# final=merge(b,d)
-# print(write('assests\dark_and_stormy_night_template.txt', final))
+#main
+if __name__=="__main__":
+    a = read_template('/home/aseel/python-fun/madlib-cli/madlib_cli/assets/text.txt')
+    b, c = parse_template(a)
+    d = welcome(c)
+    final = merge(b, d)
+    print(write('/home/aseel/python-fun/madlib-cli/madlib_cli/assets/newFile.txt', final))
+
